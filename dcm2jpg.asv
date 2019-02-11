@@ -1,0 +1,28 @@
+clear all
+clc
+close all
+%based on https://es.mathworks.com/matlabcentral/fileexchange/49882-dicom-to-any-image-format-converter
+pathname_input= 'C:\Users\cober\Desktop\DICOM IMAGENES EN BRUTO\DCM_SIN';%DICOM path
+pathname_output= 'C:\Users\cober\Desktop\JPG IMAGENES EN BRUTO\JPG_SIN';%JPG outpath
+
+%check if paths exists
+
+if ~isdir(pathname_input)
+  errorMessage = sprintf('Error: The following folder does not exist:\n%s', pathname_input);
+  uiwait(warndlg(errorMessage));
+  return;
+end
+
+if ~isdir(pathname_output)
+  errorMessage = sprintf('Error: The following folder does not exist:\n%s', pathname_output);
+  uiwait(warndlg(errorMessage));
+  return;
+end
+
+% for check loop
+
+%check path exist 
+[X,MAP]=dicomread(fullfile(pathname, filename));
+image8 = uint8(255 * mat2gray(X));
+imwrite(image8,'myfile.jpg', 'jpg');% Save Image as Jpeg format
+
