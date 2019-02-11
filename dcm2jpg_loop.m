@@ -20,12 +20,10 @@ if ~isdir(pathname_output)
   return;
 end
 
-%paths patterns
+%path pattern
 filePattern_i = fullfile(pathname_input, '*.dcm');
 dcmFiles = dir(filePattern_i); %todas las imagenes jpg
 
-filePattern_o = fullfile(pathname_output, '*.jpg');
-jpgFiles = dir(filePattern_o); %todas las imagenes jpg.
 
 %for check loop
 
